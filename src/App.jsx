@@ -1,6 +1,7 @@
-import { Contact, Home } from "lucide-react";
 import React from "react";
 import { Routes, Route } from "react-router";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
