@@ -1,7 +1,8 @@
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
+import React from "react";
 
-export function DisplayMode() {
+function DisplayMode() {
   const [isLightMode, setIsLightMode] = useState(true);
 
   useEffect(() => {
@@ -40,3 +41,4 @@ export function DisplayMode() {
     </button>
   );
 }
+export default DisplayMode;
