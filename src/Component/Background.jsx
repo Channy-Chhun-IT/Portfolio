@@ -6,6 +6,17 @@ function Background() {
 
   useEffect(() => {
     generateStars();
+    generateMeteors();
+
+    function handleResize() {
+      // generate star num base on screen resize
+      generateStars();
+    }
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize); // clean up eventlistener
+    };
   }, []);
 
   function generateStars() {
@@ -42,7 +53,7 @@ function Background() {
         animationDuration: Math.random() * 3 + 3,
       });
     }
-    setStars(newStars);
+    setMeteors(newMeteors);
   }
 
   return (
@@ -58,6 +69,20 @@ function Background() {
             top: `${star.y}%`,
             opacity: `${star.opacity}`,
             animationDuration: `${star.animationDuration}s`,
+          }}
+        />
+      ))}
+      {meteors.map((mateor) => (
+        <div
+          key={mateor.id}
+          className="meteor animate-meteor"
+          style={{
+            width: `${mateor.size * 50}px`,
+            height: `${mateor.size * 2}px`,
+            left: `${mateor.x}%`,
+            top: `${mateor.y}%`,
+            delay: `${mateor.delay}`,
+            animationDuration: `${mateor.animationDuration}s`,
           }}
         />
       ))}
